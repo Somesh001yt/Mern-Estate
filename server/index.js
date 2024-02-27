@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 import userRouter from './routes/user.route.js'
 import authRouter  from "./routes/auth.route.js"
@@ -18,13 +18,14 @@ mongoose.connect(process.env.MONGODB).then(()=> {
 
 const app = express()
 
-// Parse JSON bodies
-app.use(bodyParser.json());
+app.use(express.json());
 
+app.use(cookieParser());
 
-app.listen(3000 , ()=>{
-console.log('server is running on Port 3000')
-})
+app.listen(3000, () => {
+  console.log('Server is running on port 3000!');
+});
+
 
 app.use('/api/user' , userRouter)
 app.use('/api/auth' , authRouter)
