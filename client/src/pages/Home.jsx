@@ -17,6 +17,7 @@ export default function Home() {
       try {
         const res = await fetch('/api/listing/get?offer=true&limit=4');
         const data = await res.json();
+        console.log(data , 'data')
         setOfferListings(data);
         fetchRentListings();
       } catch (error) {
@@ -45,6 +46,10 @@ export default function Home() {
     };
     fetchOfferListings();
   }, []);
+
+  
+  console.log(offerListings)
+
   return (
     <div>
       {/* top */}
@@ -55,7 +60,7 @@ export default function Home() {
           place with ease
         </h1>
         <div className='text-gray-400 text-xs sm:text-sm'>
-          Sahand Estate is the best place to find your next perfect place to
+          Somesh Estate is the best place to find your next perfect place to
           live.
           <br />
           We have a wide range of properties for you to choose from.
